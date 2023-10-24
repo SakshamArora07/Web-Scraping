@@ -1,0 +1,117 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "be04df62-61b2-4a16-91e0-fe826dca6d69",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Requirement already satisfied: selenium==4.0.0.b4 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (4.0.0b4)\n",
+      "Requirement already satisfied: urllib3[secure]~=1.26 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from selenium==4.0.0.b4) (1.26.17)\n",
+      "Requirement already satisfied: trio~=0.17 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from selenium==4.0.0.b4) (0.22.2)\n",
+      "Requirement already satisfied: trio-websocket~=0.9 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from selenium==4.0.0.b4) (0.11.1)\n",
+      "Requirement already satisfied: attrs>=20.1.0 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from trio~=0.17->selenium==4.0.0.b4) (23.1.0)\n",
+      "Requirement already satisfied: sortedcontainers in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from trio~=0.17->selenium==4.0.0.b4) (2.4.0)\n",
+      "Requirement already satisfied: idna in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from trio~=0.17->selenium==4.0.0.b4) (3.4)\n",
+      "Requirement already satisfied: outcome in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from trio~=0.17->selenium==4.0.0.b4) (1.2.0)\n",
+      "Requirement already satisfied: sniffio in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from trio~=0.17->selenium==4.0.0.b4) (1.3.0)\n",
+      "Requirement already satisfied: cffi>=1.14 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from trio~=0.17->selenium==4.0.0.b4) (1.16.0)\n",
+      "Requirement already satisfied: wsproto>=0.14 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from trio-websocket~=0.9->selenium==4.0.0.b4) (1.2.0)\n",
+      "Requirement already satisfied: pyOpenSSL>=0.14 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from urllib3[secure]~=1.26->selenium==4.0.0.b4) (23.2.0)\n",
+      "Requirement already satisfied: cryptography>=1.3.4 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from urllib3[secure]~=1.26->selenium==4.0.0.b4) (41.0.4)\n",
+      "Requirement already satisfied: certifi in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from urllib3[secure]~=1.26->selenium==4.0.0.b4) (2023.5.7)\n",
+      "Requirement already satisfied: urllib3-secure-extra in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from urllib3[secure]~=1.26->selenium==4.0.0.b4) (0.1.0)\n",
+      "Requirement already satisfied: pycparser in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from cffi>=1.14->trio~=0.17->selenium==4.0.0.b4) (2.21)\n",
+      "Requirement already satisfied: h11<1,>=0.9.0 in c:\\users\\saksh\\appdata\\local\\programs\\python\\python311\\lib\\site-packages (from wsproto>=0.14->trio-websocket~=0.9->selenium==4.0.0.b4) (0.14.0)\n",
+      "Note: you may need to restart the kernel to use updated packages.\n"
+     ]
+    }
+   ],
+   "source": [
+    "pip install selenium==4.0.0.b4"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "44509b6d-029c-4e1e-aaf3-ae29d6c0d9da",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from selenium import webdriver\n",
+    "from selenium.webdriver.chrome.service import Service\n",
+    "import time\n",
+    "\n",
+    "# Update the path to the chromedriver.exe file\n",
+    "chrome_driver_path = 'C:/Users/saksh/OneDrive/Documents/web scraping/chromedriver-win32/chromedriver-win32/chromedriver.exe'\n",
+    "\n",
+    "s = Service(chrome_driver_path)\n",
+    "\n",
+    "driver = webdriver.Chrome(service=s)\n",
+    "driver.get(\"https://www.tutorialsfreak.com/\")\n",
+    "time.sleep(2) # making the site sleep for 2 seconds so that it can load completely before moving on to the next task...\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "d4121c42-048e-419b-b8ee-68c4135d59bf",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\saksh\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py:483: UserWarning: find_element_by_* commands are deprecated. Please use find_element() instead\n",
+      "  warnings.warn(\"find_element_by_* commands are deprecated. Please use find_element() instead\")\n"
+     ]
+    }
+   ],
+   "source": [
+    "#xpath is used to take a screenshot, user inputs etc...\n",
+    "# find_element_by_xpath has been removed in the newest version and find_element is used....\n",
+    "\n",
+    "driver.find_element_by_xpath(\"\"\"/html/body/div/div[2]/div[1]/section[1]/div/div[1]/div/div/div/div[2]/button\"\"\").click()\n",
+    "time.sleep(2)\n",
+    "driver.find_element_by_xpath(\"\"\"/html/body/div[1]/div[2]/div[1]/section/div/div[2]/div[1]/div/ul/li[7]/a\"\"\").click()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a148c9c3-3647-4b0c-96a4-d3e72a02ba31",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

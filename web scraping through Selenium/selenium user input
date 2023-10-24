@@ -1,0 +1,91 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "a7a46bd5-adaf-4e9f-94e8-397a584c6682",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from selenium import webdriver\n",
+    "from selenium.webdriver.chrome.service import Service\n",
+    "from selenium.webdriver.common.keys import Keys\n",
+    "import time\n",
+    "\n",
+    "# Update the path to the chromedriver.exe file\n",
+    "chrome_driver_path = 'C:/Users/saksh/OneDrive/Documents/web scraping/chromedriver-win32/chromedriver-win32/chromedriver.exe'\n",
+    "\n",
+    "s = Service(chrome_driver_path)\n",
+    "\n",
+    "driver = webdriver.Chrome(service=s)\n",
+    "driver.get(\"https://www.google.com/\")\n",
+    "time.sleep(2) \n",
+    "search = driver.find_element_by_xpath(\"\"\"/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/textarea\"\"\")\n",
+    "search.send_keys(\"ronaldo\") # types ronaldo in the search bar and to search we use search variable\n",
+    "search.send_keys(Keys.ENTER) # presses enter key"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "831831c5-4e90-404b-bc68-452b817e0ef1",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'find_element_by_xpath' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "Cell \u001b[1;32mIn[8], line 12\u001b[0m\n\u001b[0;32m     10\u001b[0m phone \u001b[38;5;241m=\u001b[39m driver\u001b[38;5;241m.\u001b[39mfind_element_by_xpath(\u001b[38;5;124m\"\"\"\u001b[39m\u001b[38;5;124m/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/div[2]/label/div/div[2]/div/input\u001b[39m\u001b[38;5;124m\"\"\"\u001b[39m)\n\u001b[0;32m     11\u001b[0m phone\u001b[38;5;241m.\u001b[39msend_keys(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m1234\u001b[39m\u001b[38;5;124m\"\u001b[39m) \u001b[38;5;66;03m# this time giving input through phone variable\u001b[39;00m\n\u001b[1;32m---> 12\u001b[0m \u001b[43mfind_element_by_xpath\u001b[49m(\u001b[38;5;124m\"\"\"\u001b[39m\u001b[38;5;124m/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/div/div/span\u001b[39m\u001b[38;5;124m\"\"\"\u001b[39m)\u001b[38;5;241m.\u001b[39mclick()\n",
+      "\u001b[1;31mNameError\u001b[0m: name 'find_element_by_xpath' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "chrome_driver_path = 'C:/Users/saksh/OneDrive/Documents/web scraping/chromedriver-win32/chromedriver-win32/chromedriver.exe'\n",
+    "\n",
+    "s = Service(chrome_driver_path)\n",
+    "\n",
+    "driver = webdriver.Chrome(service=s)\n",
+    "driver.get(\"https://twitter.com/\")\n",
+    "time.sleep(5) \n",
+    "driver.find_element_by_xpath(\"\"\"/html/body/div/div/div/div[2]/main/div/div/div[1]/div/div/div[3]/a/div/span/span\"\"\").click()\n",
+    "time.sleep(5)\n",
+    "phone = driver.find_element_by_xpath(\"\"\"/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/div[2]/label/div/div[2]/div/input\"\"\")\n",
+    "phone.send_keys(\"1234\") # this time giving input through phone variable\n",
+    "find_element_by_xpath(\"\"\"/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/div/div/span\"\"\").click()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6e0b8dbe-7fa4-401f-adc5-52f857188c72",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
